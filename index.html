@@ -41,9 +41,9 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#team">Team</a>
                     </li>
@@ -67,7 +67,7 @@
     </header>
     <!-- /Seção Principal -->
 
-    <!-- Services -->
+    <!-- Descrição icones -->
     <section id="services">
         <div class="container">
             <div class="row">
@@ -104,9 +104,9 @@
             </div>
         </div>
     </section>
-    <!-- /Services -->
+    <!-- /fim -->
 
-    <!-- Portfolio Grid -->
+    <!-- Grid de escambos -->
     <section class="bg-light" id="portfolio">
         <div class="container">
             <div class="row">
@@ -224,7 +224,7 @@
 
                 <section class="section4">
                 
-                <h1 class="serv">Escambos próximos a mim</h1>
+                <h2 id="tamEsc">Escambos próximos a mim</h2>
                 
                 <!-- buscar localização -->
                 
@@ -243,11 +243,11 @@
                     <!-- caixa direita -->
                 
                     <div class="col" id="coloque">
-                        <h3>Coloque o endereço;</h3>
-                             <nav class="navbar navbar-light bg-light">
+                        <h5 id="tamBusque">Busque pelo seu endereço:</h5>
+                             <nav >
                               <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                <input class="form-control mr-sm-2" id="tamPesq" type="search" placeholder="Digite aqui seu endereço :)" aria-label="Search">
+                                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
                               </form>
                             </nav>
 
@@ -279,7 +279,7 @@
     <!-- /Portfolio Grid -->
 
     <!-- About -->
-    <section id="about">
+    <!-- <section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -357,7 +357,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- /About -->
 
     <!-- Team -->
@@ -486,8 +486,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">Colabore com a gente :)</h2>
+                    <p id ="fonteC">O Escambo foi criado como um projeto elaborado na Academia Mastertech em parceria com a Estação Hack.<br> Nós Gabriela Cardoso e Tamara Hsu somos as idealizadoras do projeto e contamos com a sua colaboração para melhorias no nosso projeto! Caso tenha notado algum bug, ou tenha alguma sugestão de funcionalidades que podemos acrescentar ao nosso projeto, fique a vontade para entar em contato conosco(pode ser um elogio também rs).<br>Preencha os campos abaixo e envie sua mensagem. Teremos o prazer de ler e responder assim que possível. :)</p>
                 </div>
             </div>
             <div class="row">
@@ -496,28 +496,28 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" id="name" type="text" placeholder="Your Name *" required data-validation-required-message="Please enter your name.">
+                                    <input class="form-control" id="name" type="text" placeholder="Seu nome *" required data-validation-required-message="Campo obrigatório.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" id="email" type="email" placeholder="Your Email *" required data-validation-required-message="Please enter your email address.">
+                                    <input class="form-control" id="email" type="email" placeholder="Seu email *" required data-validation-required-message="Campo obrigatório.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required data-validation-required-message="Please enter your phone number.">
+                                    <input class="form-control" id="phone" type="tel" placeholder="Seu celular *" required data-validation-required-message="Campo obrigatório.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="message" placeholder="Your Message *" required data-validation-required-message="Please enter a message."></textarea>
+                                    <textarea class="form-control" id="message" placeholder="Escreva sua mensagem aqui, se possível conte como chegou até nosso site :) " required data-validation-required-message="Please enter a message."></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
                                 <div id="success"></div>
-                                <button id="sendMessageButton" class="btn btn-xl" type="submit">Send Message</button>
+                                <button id="sendMessageButton" class="btn btn-xl" type="submit">Enviar</button>
                             </div>
                         </div>
                     </form>
