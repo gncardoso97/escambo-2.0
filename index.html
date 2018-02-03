@@ -110,7 +110,7 @@
     <!-- Portfolio Grid -->
     <section class="bg-light" id="portfolio" ng-controller="ServicosController" >
         
-        {{servico}}
+        {{servicos}}
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -129,25 +129,25 @@
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
         
               </form>
-        
+    
             </nav>
 
             <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
+                <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="servico in servicos">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+                        <img class="img-fluid" src={{servico.img}} alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Aulas de inglês</h4>
-                        <p class="text-muted">Joel Santana - Centro - São Paulo</p>
+                        <h4>{{servico.nome}}</h4>
+                        <p class="text-muted">{{servico.id_prestador}} - Centro - São Paulo</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
+                <!-- <div class="col-md-4 col-sm-6 portfolio-item">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
@@ -217,7 +217,7 @@
                         <h4>Aulas de matemática</h4>
                         <p class="text-muted">Matheus Alves - Guarulhos - São Paulo</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -813,7 +813,7 @@
     <script src="js/agency.js"></script>
 
     <script src="js/angular.min.js"></script> 
-    <script scr="js/app.js"></script>
+    <script src="js/app.js"></script>
     <!-- Importa o Javascript utilizado neste projeto -->
     <script src="js/script.js"></script>
 

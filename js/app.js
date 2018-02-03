@@ -1,10 +1,24 @@
 var app = angular.module('escambo', []);
 
-app.controller('ServicosController', function($scope){
+app.controller('ServicosController', function($scope, $http){
     //declaração de variáveis
-    $scope.servico = "oi"; 
-    $scope.dados = {};
-    $scope.tarefas = [];
+    $http ({
+            method : "GET",
+            url :"http://45.55.82.101:3000/api/servicos",
+            dataType: 'json'
+        }).then(function mySucess (response){
+
+            $scope.servicos = response.data;
+            console.log($scope.servicos);
+        }, 
+        function myError (response) {
+            console.log(response.statusText);
+        });
+
+    
+
+    // $scope.dados = {};
+    // $scope.tarefas = [];
 
     // //atribuição de funções ao $scope
     // $scope.inserirTarefa = function()
