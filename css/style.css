@@ -1,11 +1,4 @@
-/*!
- * Mastertech - Agency
- * Insira seu código entre os comentários localizados no fim desta pagina ou/e
- * Edite o código do layout original
- */
-
-
-/* Edite o código abaixo para mudar as opções do layout original */
+/*mudar as opções do layout original */
 
 body {
     overflow-x: hidden;
@@ -392,6 +385,7 @@ header.masthead .intro-text .intro-heading {
     position: relative;
     padding: 0;
     list-style: none;
+    margin-left: -805px;
 }
 
 .timeline:before {
@@ -598,9 +592,10 @@ header.masthead .intro-text .intro-heading {
 
 section#contact {
     background-color: #222222;
-    background-image: url("../img/map-image.png");
+    background-image: url("../img/map-image3.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
 }
 
 section#contact .section-heading {
@@ -861,6 +856,39 @@ fieldset[disabled] .btn-xl:hover {
 
 
 /* Inicio do meu CSS */
+#tampesq {
+    width: 950px;
+    margin-bottom: 10px;
+}
 
+#tamEsc{
+    margin-top: 10px;
+    margin-bottom: 60px;
+    margin-left: 400px;
+}
 
+.section4{
+    padding-top: 30px;
+}
+
+#tamPesq{
+    width: 350px;
+}
+
+#tamBusque{
+    margin-left: 50px;
+}
+
+#fonteC{
+    font-family: "Arial";
+    text-align: justify;
+    color: white;
+    text-shadow: 2px -1px 5px black;
+    font-size: 20px;
+}
+
+#btMensagens {
+  margin-left: 950px;
+  margin-top: 20px;  
+}
 /* Fim do meu CSS */
