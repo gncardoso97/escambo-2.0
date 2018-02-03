@@ -385,6 +385,7 @@ header.masthead .intro-text .intro-heading {
     position: relative;
     padding: 0;
     list-style: none;
+    margin-left: -805px;
 }
 
 .timeline:before {
@@ -884,5 +885,10 @@ fieldset[disabled] .btn-xl:hover {
     color: white;
     text-shadow: 2px -1px 5px black;
     font-size: 20px;
+}
+
+#btMensagens {
+  margin-left: 950px;
+  margin-top: 20px;  
 }
 /* Fim do meu CSS */
