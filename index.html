@@ -35,25 +35,34 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
+
+                     <li class="nav-item">
+                         <a class="nav-link js-scroll-trigger" href="">Perfil</a>
+                     </li>
+                     <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="">Mensagens</a>
+                        </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                        <a class="nav-link js-scroll-trigger" href="#services">Sobre o Escambo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Escambos</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#about">About</a>
                     </li> -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                        <a class="nav-link js-scroll-trigger" href="#contact">Colabore</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+
 
     <!-- Seção Principal -->
     <header class="masthead">
@@ -67,51 +76,68 @@
     </header>
     <!-- /Seção Principal -->
 
+
+
     <!-- Descrição icones -->
     <section id="services">
+
         <div class="container">
+
             <div class="row">
+
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Vamos escambar?!</h2>
                     <h3 class="section-subheading text-muted">As vantagens de utilizar o Escambo.</h3>
                 </div>
             </div>
+
             <div class="row text-center">
+
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-            </span>
+                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+
                     <h4 class="service-heading">Troque!</h4>
                     <p class="text-muted">No Escambo você pode oferecer aquilo que você faz de melhor, ou apenas mais uma tarefa rotineira da sua vida. Troque por exemplo aulas de inglês por um conserto no seu chuveiro quebrado.</p>
+               
                 </div>
+
+
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-            </span>
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+
                     <h4 class="service-heading">Online</h4>
                     <p class="text-muted"> O Escambo é uma plataforma totalmente online. Encontre o serviço que você precisa, ofereça um serviço em troca. E acerte os detalhes de onde você estiver.</p>
+                
                 </div>
                 
+
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-            </span>
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+
                     <h4 class="service-heading">Seguro!</h4>
                     <p class="text-muted">Você pode denunciar escambos que não foram prestados corretamente no campo de denúncias. E não fazemos nenhum tipo de cobrança por serviço. É tudo de graça. Nossa moeda de troca é o seu próprio serviço.</p>
+                
                 </div>
             </div>
         </div>
     </section>
     <!-- /fim -->
 
+
     <!-- Portfolio Grid -->
     <section class="bg-light" id="portfolio" ng-controller="ServicosController" >
         
-        {{servicos}}
         <div class="container">
+            
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Escambos</h2>
@@ -125,7 +151,6 @@
               <form class="form-inline">
         
                 <input class="form-control mr-md-4" id="tampesq"  type="search" placeholder="Digite aqui o escambo que você procura :)" aria-label="Search">
-        
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
         
               </form>
@@ -133,20 +158,26 @@
             </nav>
 
             <div class="row">
+
                 <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="servico in servicos">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                        
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
+                            <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
+                        
                         <img class="img-fluid" src={{servico.img}} alt="">
                     </a>
+
                     <div class="portfolio-caption">
                         <h4>{{servico.nome}}</h4>
                         <p class="text-muted">{{servico.id_prestador}} - Centro - São Paulo</p>
                     </div>
+
                 </div>
+
                 <!-- <div class="col-md-4 col-sm-6 portfolio-item">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
                         <div class="portfolio-hover">
@@ -223,16 +254,13 @@
     </section>
 
                 <!-- proximos a mim -->
-
-
                 <section class="section4">
-                
-                <h2 id="tamEsc">Escambos próximos a mim</h2>
+                     <h2 id="tamEsc">Escambos próximos a mim</h2>
                 
                 <!-- buscar localização -->
-                
                 <div class="container" id="cont2">
-                  <div class="row">
+                  
+                    <div class="row">
                     <div class="col">
                 
                 
@@ -240,7 +268,7 @@
                  
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.163354378367!2d-46.65655378544241!3d-23.56257588468229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8e4bfffff%3A0x7fcdda51e521566!2sWeWork+Paulista!5e0!3m2!1spt-BR!2sbr!4v1515754971412" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 
-                    </div>
+                </div>
                 
                 
                     <!-- caixa direita -->
@@ -256,53 +284,21 @@
 
                             <!-- cards -->
                 
-                              <div class="row">
-                                <div class="col-6 col-sm-3"> <div class="card" style="width: 18rem;">
+                            <div class="card" style="width: 18rem;" id="cards">
                                     <img class="card-img-top" src="..." alt="Card image cap">
+
                                     <div class="card-body">
                                       <h5 class="card-title">Card title</h5>
                                       <p class="card-text">Some quick example text </p>
                                       <a href="#" class="btn btn-primary">Go somewhere</a>
                                     </div>
-                                  </div></div>
+                                
+                            </div>
+          
 
-
-                                <div class="col-6 col-sm-3"> <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="..." alt="Card image cap">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">Some quick example text </p>
-                                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                  </div></div>
-                              
-                                <!-- Force next columns to break to new line -->
-                                <div class="w-100"></div>
-                              
-                                <div class="col-6 col-sm-3"> <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="..." alt="Card image cap">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">Some quick example text </p>
-                                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                  </div></div>
-
-
-                                <div class="col-6 col-sm-3"> <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" src="..." alt="Card image cap">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">Some quick example text </p>
-                                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                  </div></div>
-                              </div>
-
-                        </div>
-                    </div>
-                    </div>
-                  </div>	
+                        
+                    </div>	
+        
                 </section>
                 
 
@@ -313,7 +309,7 @@
     <!-- / Grid -->
 
     <!-- About -->
-    <section class="bg-light"  id="about">
+    <!-- <section class="bg-light"  id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -363,7 +359,7 @@
 
         <button type="button" class="btn btn-info" id = "btMensagens">Ir para mensagens</button>
 
-    </section>
+    </section> -->
     <!-- /About -->
 
     <!-- Team
@@ -493,7 +489,9 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Colabore com a gente :)</h2>
+                    <br>
                     <p id ="fonteC">O Escambo foi criado como um projeto elaborado na Academia Mastertech em parceria com a Estação Hack.<br> Nós Gabriela Cardoso e Tamara Hsu somos as idealizadoras do projeto e contamos com a sua colaboração para melhorias no nosso projeto! Caso tenha notado algum bug, ou tenha alguma sugestão de funcionalidades que podemos acrescentar ao nosso projeto, fique a vontade para entar em contato conosco(pode ser um elogio também rs).<br>Preencha os campos abaixo e envie sua mensagem. Teremos o prazer de ler e responder assim que possível. :)</p>
+                    <br>
                 </div>
             </div>
             <div class="row">
@@ -537,8 +535,8 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Criado por Gabriela Cardoso e Tamara Hsu 2018</span>
+                <div class="col-md-6">
+                    <span class="copyright">Desnvolvido por: Gabriela Cardoso e Tamara Hsu  - 2018</span>
                 </div>
                 <!-- <div class="col-md-4">
                     <ul class="list-inline social-buttons">
@@ -562,7 +560,7 @@
                 <div class="col-md-4">
                     <ul class="list-inline quicklinks">
                         <li class="list-inline-item">
-                            <a href="#">Termos de uso</a>
+                            <a href="#">Termos de uso    </a>
                         </li>
                         <li class="list-inline-item">
                             <a href="#">Denunciar Escambo</a>
@@ -802,6 +800,10 @@
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
+    
+    <script src="js/angular.min.js"></script> 
+    <script src="js/app.js"></script>
+
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -812,8 +814,8 @@
     <!-- Custom scripts for this template -->
     <script src="js/agency.js"></script>
 
-    <script src="js/angular.min.js"></script> 
-    <script src="js/app.js"></script>
+
+    <script type="text/javascript" src="typed.js-master/typed.js-master/lib/typed.js"></script>
     <!-- Importa o Javascript utilizado neste projeto -->
     <script src="js/script.js"></script>
 
