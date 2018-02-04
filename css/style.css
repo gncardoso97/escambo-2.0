@@ -895,6 +895,17 @@ fieldset[disabled] .btn-xl:hover {
 #cards{
     margin-top: 20px;
 }
+#navBlack{
+    background-color: black;
+}
 
+#cadastre-se{
+    margin-left:550px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+#btCadastrar{
+    margin-left: 950px;
+}
 
 /* Fim do meu CSS */
