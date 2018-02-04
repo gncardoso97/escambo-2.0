@@ -1,7 +1,8 @@
 var app = angular.module('escambo', []);
 
 app.controller('ServicosController', function($scope, $http){
-    //declaração de variáveis
+    $scope.modalInfo = {};
+    
     $http ({
             method : "GET",
             url :"http://45.55.82.101:3000/api/servicos",
@@ -9,13 +10,15 @@ app.controller('ServicosController', function($scope, $http){
         }).then(function mySucess (response){
 
             $scope.servicos = response.data;
-            console.log($scope.servicos);
+            // console.log($scope.servicos);
         }, 
         function myError (response) {
-            console.log(response.statusText);
+            // console.log(response.statusText);
         });
 
-    
+        $scope.modal = function(servico){
+            $scope.modalInfo = servico;
+        }
 
     // $scope.dados = {};
     // $scope.tarefas = [];
