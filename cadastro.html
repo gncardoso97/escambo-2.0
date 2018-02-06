@@ -23,7 +23,7 @@
 
 </head>
 
-<body id="page-top" ng-app="escambo">
+<body id="page-top" ng-app="escambo" ng-controller="CadastroController">
 
     <!-- Navegação -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navBlack">
@@ -37,7 +37,7 @@
                     <ul class="navbar-nav ml-auto">
     
                          <li class="nav-item">
-                             <a class="nav-link js-scroll-trigger" href="">Perfil</a>
+                             <a class="nav-link js-scroll-trigger" href="">Perfil {{nome}} </a>
                          </li>
                          <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" href="">Mensagens</a>
@@ -69,140 +69,143 @@
 
         <section class="section2">
                 
-            <h2 id="cadastre-se">Cadastre-se </h2>
-
             <div class="container">
-            <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Usuário:</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Crie seu usuário">
-                      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                    </div>
+            <form method="post" ng-submit="salvarUsuario(usuario)" ng-show="showUsuario">
+                        <h2 id="cadastre-se">Cadastre-se </h2>    
+                <div class="row">
+                        <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">Usuário:</label>
+                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Crie seu usuário" ng-model="usuario._id" required>
+                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
 
-                    <div class="form-group">
-                            <label for="exampleInputPassword1">Senha:</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*******">
+                        <div class="form-group col-md-6">
+                                <label for="exampleInputPassword1">Senha:</label>
+                                <input type="password" class="form-control" placeholder="*******" ng-model="usuario.senha">
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Nome completo:</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Insira seu nome sem abreviações aqui">
-                    </div>
-
 
                     <div class="row">
-                            <div class="col">
-                                    <div class="form-group">
-                                            <label for="exampleInputPassword1">Data de nascimento:</label>
-                                            <input type="date" class="form-control" id="exampleInputPassword1" placeholder="ex: 00/00/0000">
-                                    </div>
-                            </div>
+                        <div class="form-group col-md-6">
+                                <label for="exampleInputPassword1">Nome completo:</label>
+                                <input type="text" class="form-control" placeholder="Insira seu nome sem abreviações aqui" ng-model="usuario.nome_completo">
+                        </div>
+                        <div class="col">
+                                <div class="form-group">
+                                        <label for="exampleInputPassword1">Data de nascimento:</label>
+                                        <input type="date" class="form-control"  placeholder="ex: 00/00/0000" ng-model="usuario.nascimento">
+                                </div>
+                        </div>
 
-                            <div class="col">
-                                    <div class="form-group">
-                                            <label for="exampleInputPassword1">CPF:</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="123.456.789-00">
-                                    </div>
-                            </div>
+                        <div class="col">
+                                <div class="form-group">
+                                        <label for="exampleInputPassword1">CPF:</label>
+                                        <input type="text" class="form-control" placeholder="123.456.789-00" ng-model="usuario.cpf">
+                                </div>
+                        </div>
                     </div>
 
-                    
                     <div class="row">
                             <div class="col">
                                     <div class="form-group">
                                             <label for="exampleInputPassword1">Email:</label>
-                                            <input type="email" class="form-control" id="exampleInputPassword1" placeholder="exemplo@email.com">
+                                            <input type="email" class="form-control" placeholder="exemplo@email.com" ng-model="usuario.email">
                                        </div>
                             </div>
                             <div class="col">
                                     <div class="form-group">
                                             <label for="exampleInputPassword1">Telefone:</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: (DDD) 1234-5678">
+                                            <input type="text" class="form-control" placeholder="ex: (DDD) 1234-5678" ng-model="usuario.telefone">
                                     </div>
                             </div>
-                          </div>
-                    
-
-                   
-                    
-                    
-                    
+                    </div>
+                                    
                     <div class="form-group">
                             <label for="exampleInputPassword1">Endereço:</label>
                             <div class="row">
-                                    <div class="col">
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Logradouro">
+                                <div class="col-md-3">
+                                      <input type="text" class="form-control" id="cep" placeholder="CEP" ng-model="usuario.endereco.CEP" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);">
+                                </div>
+                                    <div class="col-md-6">
+                                            <input type="text" id="rua" class="form-control" placeholder="Logradouro" ng-model="usuario.endereco.logradouro">
+                                    </div>
+                                    <div class="col-md-3">
+                                            <input type="text" id="numero" class="form-control" placeholder="N° residência" ng-model="usuario.endereco.numero">
                                     </div>
                                     <div class="col">
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="N° residência">
+                                                <input type="text" id="bairro" class="form-control" placeholder="Bairro" ng-model="usuario.endereco.bairro"> 
                                     </div>
-                                  </div>
+                             </div>
                             <br>
                             <div class="row">
+                                   
                                     <div class="col">
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Bairro"> 
+                                            <input type="text" class="form-control" id="cidade" placeholder="Cidade" ng-model="usuario.endereco.cidade">
                                     </div>
                                     <div class="col">
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Cidade">
+                                            <input type="text" class="form-control" id="estado" placeholder="Estado" ng-model="usuario.endereco.estado">
                                     </div>
                                     <div class="col">
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Estado">
-                                    </div>
-                                    <div class="col">
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="País">
+                                            <input type="text" class="form-control" id="pais" placeholder="País" ng-model="usuario.endereco.pais">
                                      </div>
                                 </div>
                              <br>
-                          
-                        
-                            
-
-                    </div>
-
-
-                    <div class="alert alert-info" role="alert">
-                            <span class="oi oi-plus"></span> Adicionar serviço para escambar
                     </div>
                     
-
-                    <div class="form-group">
-                            <label for="exampleInputPassword1">Nome do serviço:</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: Aulas de Inglês">
-                    </div>
-
-                    <div class="form-group">
-                            <label for="exampleInputPassword1">Descrição do Serviço:</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Conte um pouco sobre o serviço que você pode escambar">
-                    </div>
-                    
-                    <div class="form-group">
-                            <label for="exampleInputPassword1">Disponibilidade de Escambar:</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: Fim de semana; Dias da semana; Todos os dias a noite; ">
-                    </div>
-
-                    <select class="form-control">
-                            <option>Categoria:</option>
-                            <option>Aulas</option>
-                            <option>Beleza</option>
-                            <option>Consertos</option>
-                            <option>Doméstico</option>
-                            <option>Aluguel</option>
-                            <option>Lazer</option>
-                            <option>Outros</option>
-
-                    </select>
-                    <br>
-
-
-                    <form>
-                            <div class="form-group">
-                              <label for="exampleFormControlFile1">Adicionar Imagem</label>
-                              <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                            </div>
-                          </form>
 
                     <button type="submit" class="btn btn-primary" id="btCadastrar">Cadastrar</button>
                   </form>
+
+                  <form ng-submit="salvarServico(servico)" ng-show="showServico">
+
+                  <div class="alert alert-info" role="alert">
+                        <span class="oi oi-plus"></span> Adicionar serviço para escambar
+                </div>
+                
+
+                <div class="form-group">
+                        <label for="exampleInputPassword1">Nome do serviço:</label>
+                        <input type="text" class="form-control"  placeholder="ex: Aulas de Inglês" ng-model="servico.nome">
+                </div>
+
+                <div class="form-group">
+                        <label for="exampleInputPassword1">Descrição do Serviço:</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Conte um pouco sobre o serviço que você pode escambar" ng-model="servico.descricao">
+                </div>
+                
+                <div class="form-group">
+                        <label for="exampleInputPassword1">Disponibilidade de Escambar:</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: Fim de semana; Dias da semana; Todos os dias a noite; " ng-model="disponibilidade">
+                </div>
+
+                <div class="form-group">
+                        <select class="form-control" ng-model="servico.categoria">
+                                <option>Selecione uma categoria</option>
+                                <option value="Aulas">Aulas</option>
+                                <option value="Beleza">Beleza</option>
+                                <option value="Consertos">Consertos</option>
+                                <option value="Domestico">Doméstico</option>
+                                <option value="Aluguel">Aluguel</option>
+                                <option value="Lazer">Lazer</option>
+                                <option value="Outros">Outros</option>
+
+                        </select>
+                </div>
+                <br>
+                        <div class="form-group">
+                          <label for="exampleFormControlFile1"> Imagem</label>
+                          <input type="link" class="form-control-file" id="exampleFormControlFile1" ng-model="servico.img">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="btCadastrar">Cadastrar</button>
+                      
+                  </form>
+
+                  <div ng-show="sucesso">
+                          <img src="img/sucesso.gif">
+                        <h2>Serviço cadastrado com sucesso! <a href="index.html#portfolio">Clique aqui</a> e veja todos os serviços</h2>
+
+                </div>
             </div>
                    
                     
@@ -212,59 +215,6 @@
                 
                 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
@@ -272,6 +222,7 @@
 
     
     <script src="js/angular.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-animate.js"></script>    
     <script src="js/app.js"></script>
 
     <!-- Plugin JavaScript -->
@@ -285,7 +236,7 @@
     <script src="js/agency.js"></script>
 
 
-    <script type="text/javascript" src="typed.js-master/typed.js-master/lib/typed.js"></script>
+    
     <!-- Importa o Javascript utilizado neste projeto -->
     <script src="js/script.js"></script>
 

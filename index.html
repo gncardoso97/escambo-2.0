@@ -28,7 +28,7 @@
     <!-- Navegação -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">Escambo</a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="img/logo-Escambo.png" class="logo"></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -155,7 +155,7 @@
 
             <div class="row">
 
-                <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="servico in servicos | filter:filtro">
+                <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="servico in servicos | filter:filtro" ng-animate="'animate'">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1" ng-click="modal(servico)">
                         
                         <div class="portfolio-hover">
@@ -603,6 +603,7 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     
     <script src="js/angular.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-animate.js"></script>  
     <script src="js/app.js"></script>
 
     <!-- Plugin JavaScript -->

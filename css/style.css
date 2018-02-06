@@ -900,12 +900,35 @@ fieldset[disabled] .btn-xl:hover {
 }
 
 #cadastre-se{
-    margin-left:550px;
+    margin-left:450px;
     margin-top: 50px;
     margin-bottom: 20px;
 }
 #btCadastrar{
     margin-left: 950px;
 }
+.logo{
+    width: 13vh;
+}
 
+::-webkit-scrollbar-track {
+    background-color: #FFFFFF;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+    background: #000000;
+}
+
+.fade.ng-enter {
+    transition:0.5s linear all;
+    opacity:0;
+  }
+  
+  /* The finishing CSS styles for the enter animation */
+  .fade.ng-enter.ng-enter-active {
+    opacity:1;
+  }
 /* Fim do meu CSS */
