@@ -1,6 +1,14 @@
 var app = angular.module('escambo', ['ngAnimate']);
+app.run(['$rootScope',
+function ($rootScope) {
 
-app.controller('ServicosController', function($scope, $http){
+   $rootScope.logado = false;
+   $rootScope.usuario = {};
+
+}]);
+
+app.controller('ServicosController', ['$scope', '$rootScope', '$http',
+function ($scope, $rootScope, $http){
     $scope.modalInfo = {};
     
     $http ({
@@ -20,9 +28,10 @@ app.controller('ServicosController', function($scope, $http){
             $scope.modalInfo = servico;
         }
 
-})
+}])
 
-app.controller('CadastroController', function($scope, $http){
+app.controller('CadastroController', ['$scope', '$rootScope','$http',
+function ($scope, $rootScope, $http){
     $scope.showServico = false;
     $scope.showUsuario = true;
     $scope.nome = "";
@@ -72,4 +81,30 @@ app.controller('CadastroController', function($scope, $http){
         
     };
     
-});
+}])
+
+app.controller('PerfilController', ['$scope', '$rootScope','$http',
+function ($scope, $rootScope, $http){
+    
+    $scope.login = function(usuario){
+        $http ({
+                method : "POST",
+                url :"http://45.55.82.101:3000/api/usuarios/login",
+                data: usuario
+            }).then(function mySucess (response){
+                if(response.data._id == undefined || response.data._id == ""){
+                    $scope.mensagem = "Usuário e/ou Senha incorreto! :(";
+                    return;
+                }
+                
+                $rootScope.logado = true;
+                $rootScope.usuario = response.data;
+                // console.log($scope.servicos);
+            }, 
+            function myError (response) {
+                $scope.mensagem = "Usuário e/ou Senha incorreto! :("
+                // console.log(response.statusText);
+            });
+    }
+
+}])
