@@ -59,23 +59,103 @@
             
             <div id="wrapper">
               <div id="container" ng-show="logado">
-                <div class="info">
+                  <!-- Perfil -->
+                <div class="info" ng-show="perfil">
                   <div class="name">{{usuario.nome_completo}}</div>
                         <div class="location"><i class="fas fa-map-pin"></i> {{usuario.endereco.cidade}}</div>
                     </div>	
+                    <!-- Servico Add -->
+                    <div class="info servico col-md-8" ng-show="servicoDiv">
+                            <h3>Novo Serviço</h3>
+                            <form ng-submit="salvarServico(servico)" class="col-md-12">                                        
+                                    <div class="alert alert-info" role="alert">
+                                        <span class="oi oi-plus"></span> Adicionar serviço para escambar
+                                    </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                            <label for="exampleInputPassword1">Nome do serviço:</label>
+                                            <input type="text" class="form-control"  placeholder="ex: Aulas de Inglês" ng-model="servico.nome">
+                                    </div>
+                    
+                                    <div class="form-group col-md-6">
+                                            <label for="exampleInputPassword1">Descrição do Serviço:</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Conte um pouco sobre o serviço que você pode escambar" ng-model="servico.descricao">
+                                    </div>
+                                
+                                </div>
+
+                                <div class="row">
+                                <div class="form-group col-md-6">
+                                        <label for="exampleInputPassword1">Disponibilidade de Escambar:</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: Fim de semana; Dias da semana; Todos os dias a noite; " ng-model="servico.disponibilidade">
+                                </div>
+                
+                                <div class="form-group col-md-6">
+                                    <label for="">Categoria</label>
+                                        <select class="form-control" ng-model="servico.categoria">
+                                                <option value="Aulas">Aulas</option>
+                                                <option value="Beleza">Beleza</option>
+                                                <option value="Consertos">Consertos</option>
+                                                <option value="Domestico">Doméstico</option>
+                                                <option value="Aluguel">Aluguel</option>
+                                                <option value="Lazer">Lazer</option>
+                                                <option value="Outros">Outros</option>
+                                        </select>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="exampleFormControlFile1">Imagem</label>
+                                        <input type="text" placeholder="Link da imagem" class="form-control" id="exampleFormControlFile1" ng-model="servico.img">
+                                    </div>
+                                </div>
+                            <button class="btn btn-info col-md-12" type="submit">Adicionar</button>
+                        </form>
+                            <p style="color:#00FF62;" ng-show="sucesso">{{mensagemServico}}</p>
+                            <p style="color:red;" ng-show="!sucesso">{{mensagemServico}}</p>
+
+                    </div>
+
+                    <div class="info infoMensagem col-md-8" ng-show="mensagem">
+                            <section class="chat" ng-controller="chatController">
+                                    <!--Header-->
+                                    <section class="header clearfix">
+                                      <div class="back">
+                                        <a href="#">Mensagens</a>
+                                      </div>
+                                    </section>
+                                    <!--Messages-->
+                                    <section class="messages clearfix">
+                                      
+                                      <div ng-repeat="message in messages" class="{{message.from}}">
+                                        <p>{{message.text}}</p>
+                                      </div>
+                                      
+                                      
+                                    </section>
+                                    <!--Footer-->
+                                    <section class="footer clearfix">
+                                      <input type="text" id="message-input" class="message-input" ng-model="chatText" ng-enter="triggerSubmit()" />
+                                      <span ng-click="addMessage()">Enviar</span>
+                                    </section>
+                                    
+                                  </section>
+                    </div>
+
                     <div class="menu">
                             <ul>
-                                <li><a href="#"><i class="far fa-address-card"></i></a></li>
-                                <li><a href="#"><i class="far fa-envelope"></i></a></li>
-                                <li><a href="#"><i class="far fa-plus-square iconeVerde"></i></a></li>
+                                <li><a href="#" ng-click="perfil=true; mensagem=false;servicoDiv=false"><i class="far fa-address-card"></i></a></li>
+                                <li><a href="#"ng-click="perfil=false; mensagem=true;servicoDiv=false"><i class="far fa-envelope"></i></a></li>
+                                <li><a href="#"ng-click="perfil=false; mensagem=false;servicoDiv=true"><i class="far fa-plus-square iconeVerde"></i></a></li>
                             </ul>
                             <ul>
                                 <li class="voltar"><a href="index.html"><i class="fab fa-grav"></i> Voltar</a></li>
                             </ul>
                     </div>
-                    <div class="profile">
+                    <div class="profile" ng-show="perfil">
                  <img src="img/perfil.gif">
                 </div>
+
               </div>
 
               <div id="container" ng-show="!logado" style="width:50%;padding: 20px 0 0px 215px;">
@@ -97,60 +177,7 @@
                         <p style="color:red;">{{mensagem}}</p>
 
                 </div>
-
-                <div id="container" ng-show="addServico" style="width:50%;padding: 20px 0 0px 215px;">
-                        <div class="profile none">
-                                <h4 style="margin-left:-15px;">Novo Cadastro de Escambo</h4>
-                                <img src="img/perfil.gif" style="right: 80px;">
-                        </div>
-                        <form ng-submit="login(usuario)" class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control col-md-12" placeholder="Usuario" name="usuario" id="usuario" ng-model="usuario.id" required>
-                                <input type="password" class="form-control col-md-12" placeholder="Senha" name="password" id="password" ng-model="usuario.senha">
-                                
-                            </div>
-                            <button class="btn btn-info col-md-12" type="submit">Logar!!</button>
-                            
-                            <a href="cadastro.html" class="btn btn-info col-md-12">Cadastrar-se!</a>
-
-                        </form>
-                        <p style="color:red;">{{mensagem}}</p>
-
-                </div>
-
             </div>
-
-        
-<!-- <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title" id="myModalLabel">More About Chuck</h4>
-          </div>
-          <div class="modal-body">
-            <center>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqwOqcEJ23Bf5S3MnH8KByDy8BdobpGzvzKC9AyHEb2U4ois_9" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-            <h3 class="media-heading">Chuck Norris <small>USA</small></h3>
-            <span><strong>Skills: </strong></span>
-            <span class="label label-warning">HTML5/CSS</span>
-            <span class="label label-info">Adobe CS 5.5</span>
-            <span class="label label-info">Microsoft Office</span>
-            <span class="label label-success">Windows XP, Vista, 7</span>
-            </center>
-          <hr>
-          <center>
-            <p class="text-left"><strong>Bio: </strong><br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-            <br>
-          </center>
-        </div>
-        <div class="modal-footer">
-          <center>
-            <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Chuck</button>
-          </center>
-        </div>
-      </div>
-      </div> -->
     </section>
    
     <!-- Bootstrap core JavaScript -->
