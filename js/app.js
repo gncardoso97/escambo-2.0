@@ -98,6 +98,7 @@ function ($scope, $rootScope, $http){
                 }
                 
                 $rootScope.logado = true;
+                $rootScope.perfil = true;
                 $rootScope.usuario = response.data;
                 // console.log($scope.servicos);
             }, 
@@ -105,6 +106,73 @@ function ($scope, $rootScope, $http){
                 $scope.mensagem = "Usuário e/ou Senha incorreto! :("
                 // console.log(response.statusText);
             });
-    }
+    };
+
+    $scope.salvarServico = function(servico){
+        console.log(servico);
+        servico._id = $rootScope.usuario._id + "." + servico.nome.trim().replace(" ","");
+        servico.id_prestador = $rootScope.usuario._id;
+        servico.disponivel = true;
+
+        console.log("servico");
+        $http ({
+            method : "POST",
+            url :"http://45.55.82.101:3000/api/servicos/criar",
+            data: servico
+        }).then(function mySuccess (response){
+            $scope.formServico = false;
+            $scope.sucesso = true;
+            $scope.mensagemServico = "Serviço cadastrado com sucesso!";
+            console.log("response servico: " + response);
+            $scope.servico = {};
+            // console.log($scope.servicos);
+        }, 
+        function myError (response) {
+            $scope.mensagemServico = "Erro ao cadastrar :(";
+            // console.log(response.statusText);
+        });
+        
+    };
 
 }])
+
+//Add controller
+app.controller('chatController', ['$scope', function($scope) {
+  //Add default messages to object
+  $scope.messages = [
+      {text:'Oi! tudo bem? Terça dia 14 você vai estar disponível ? =D', from: 'message-remote'},
+    //   {text:'Top of the morning to you governor.', from:'message-remote'}
+  ];
+  //Function to add message
+  $scope.addMessage = function() {
+    
+    //Check if message is empty and stop function
+    if($scope.chatText === '' || $scope.chatText === undefined ){
+     //message empty focus input to write message
+      angular.forEach(document.querySelectorAll('#message-input'), function(elem) { elem.focus(); });
+      return false;
+    }
+    //message ok push message to $scope.messages
+    $scope.messages.push({text:$scope.chatText , from:'message-local'});
+      //reset input
+      $scope.chatText = '';
+  }
+  //run addMessage on pressing enter.
+  $scope.triggerSubmit = function() { $scope.addMessage(); }
+  
+  }])
+//Add directive to handle enter key
+.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+ 
+                event.preventDefault();
+            }
+        });
+    };
+});
+
