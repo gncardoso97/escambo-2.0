@@ -26,41 +26,36 @@
 <body id="page-top" ng-app="escambo" ng-controller="CadastroController">
 
     <!-- Navegação -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navBlack">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Escambo</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              Menu
-              <i class="fa fa-bars"></i>
-            </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-    
-                         <li class="nav-item">
-                             <a class="nav-link js-scroll-trigger" href="">Perfil {{nome}} </a>
-                         </li>
-                         <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="">Mensagens</a>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+                <div class="container">
+                    <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="img/logo-Escambo.png" class="logo"></a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                  Menu
+                  <i class="fa fa-bars"></i>
+                </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+        
+                             <li class="nav-item">
+                                 <a class="nav-link js-scroll-trigger" href="perfil.html">Perfil</a>
+                             </li>
+                             <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="perfil.html">Mensagens</a>
+                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="index.html#services">Sobre o Escambo</a>
                             </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#services">Sobre o Escambo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#portfolio">Escambos</a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-                        </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#contact">Colabore</a>
-                        </li>
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="index.html#portfolio">Escambos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="index.html#contact">Colabore</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        
     
     
 
@@ -158,7 +153,7 @@
 
                   <form ng-submit="salvarServico(servico)" ng-show="showServico">
 
-                  <div class="alert alert-info" role="alert">
+                  <div class="alert alert-info" id="alerta" role="alert">
                         <span class="oi oi-plus"></span> Adicionar serviço para escambar
                 </div>
                 
@@ -202,8 +197,10 @@
                   </form>
 
                   <div ng-show="sucesso">
-                          <img src="img/sucesso.gif">
-                        <h2>Serviço cadastrado com sucesso! <a href="index.html#portfolio">Clique aqui</a> e veja todos os serviços</h2>
+
+                        <h2 id="hGif">Serviço cadastrado com sucesso! <br><a href="index.html#portfolio">Clique aqui</a> e veja todos os serviços</h2>
+                          <img id="imgGif" src="img/sucesso.gif">
+                        
 
                 </div>
             </div>
